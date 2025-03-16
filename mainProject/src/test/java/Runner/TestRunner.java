@@ -36,7 +36,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     @BeforeSuite
     public static void beforeSuite() throws IOException {
         System.out.println("Before Suite");
-//deleteRequiredFolder("target\\allure");
+        deleteRequiredFolder("target\\allure");
     }
 
     @AfterSuite

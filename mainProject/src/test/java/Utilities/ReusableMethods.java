@@ -12,7 +12,7 @@ import static Utilities.Props.*;
 public class ReusableMethods {
 
     public static void deleteRequiredFolder(String path) throws IOException {
-        String filePath = System.getProperty("user.dir");
+        String filePath = System.getProperty("user.dir") + path;
         File file = new File(filePath);
         FileUtils.deleteDirectory(file);
         file.delete();
@@ -34,4 +34,6 @@ public class ReusableMethods {
     public static String getProp(String propertyName) {
         return properties.getProperty(propertyName);
     }
+
+
 }
