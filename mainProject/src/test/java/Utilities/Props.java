@@ -13,7 +13,7 @@ public class Props {
     public static String env;
 
     static {
-        loadRunConfigProps("environmnt.properties");
+        loadRunConfigProps("/environment.properties");
     }
 
     public static void loadRunConfigProps(String configPropertyFileLocation) {
