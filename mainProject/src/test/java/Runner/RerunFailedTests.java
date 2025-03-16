@@ -15,7 +15,7 @@ import static Utilities.ReusableMethods.deleteRequiredFolder;
 import static Utilities.ReusableMethods.threadSleep;
 
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "target",
         glue = {"Utilities", "StepDefinations"},
         tags = "@test1",
         plugin = {"pretty", "html:target/cucumber-reports",
@@ -25,7 +25,7 @@ import static Utilities.ReusableMethods.threadSleep;
         monochrome = true
 )
 
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class RerunFailedTests extends AbstractTestNGCucumberTests {
 
     @Test(
             groups = {"cucumber"},
