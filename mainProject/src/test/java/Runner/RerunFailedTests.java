@@ -15,9 +15,8 @@ import static Utilities.ReusableMethods.deleteRequiredFolder;
 import static Utilities.ReusableMethods.threadSleep;
 
 @CucumberOptions(
-        features = "target",
+        features = "@target/failedRerun.txt",
         glue = {"Utilities", "StepDefinations"},
-        tags = "@test1",
         plugin = {"pretty", "html:target/cucumber-reports",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

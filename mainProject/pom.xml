@@ -111,5 +111,22 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>amazon-uat1</id>
+            <properties>
+                <env>uat1</env>
+                <properties.path>/environments/amazon-uat1.properties</properties.path>
+            </properties>
+        </profile>
 
+        <profile>
+            <id>amazon-uat2</id>
+            <properties>
+                <env>uat2</env>
+                <properties.path>/environments/amazon-uat2.properties</properties.path>
+            </properties>
+        </profile>
+
+    </profiles>
 </project>
