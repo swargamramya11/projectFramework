@@ -18,7 +18,7 @@ import static Utilities.ReusableMethods.threadSleep;
         features = "@target/failedRerun.txt",
         glue = {"Utilities", "StepDefinations"},
         plugin = {"pretty", "html:target/cucumber-reports",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7jvm",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failedRerun.txt"},
         monochrome = true

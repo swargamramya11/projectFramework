@@ -7,6 +7,8 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
 
+import static Utilities.Props.*;
+
 public class ReusableMethods {
 
     public static void deleteRequiredFolder(String path) throws IOException {
@@ -27,5 +29,9 @@ public class ReusableMethods {
         } catch (Exception e) {
 
         }
+    }
+
+    public static String getProp(String propertyName) {
+        return properties.getProperty(propertyName);
     }
 }

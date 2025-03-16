@@ -8,6 +8,8 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 
+import static Utilities.ReusableMethods.getProp;
+
 public class BrowserDriver {
 
     public static WebDriver driver;
@@ -19,7 +21,7 @@ public class BrowserDriver {
 
     public static void launchBrowserAndNavigateToUrl() {
         driver = new ChromeDriver(getChromeOptions());
-        driver.get("https://www.amazon.com/");
+        driver.get(getProp("url"));
     }
 
     public static WebDriver getWebDriver(){
