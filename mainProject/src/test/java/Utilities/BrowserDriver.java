@@ -9,6 +9,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 
 import static Utilities.ReusableMethods.getProp;
+import static Utilities.ReusableMethods.threadSleep;
 
 public class BrowserDriver {
 
@@ -21,6 +22,7 @@ public class BrowserDriver {
 
     public static void launchBrowserAndNavigateToUrl() {
         driver = new ChromeDriver(getChromeOptions());
+        threadSleep(6000);
         driver.get(getProp("url"));
     }
 

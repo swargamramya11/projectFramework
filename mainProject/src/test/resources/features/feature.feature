@@ -4,5 +4,5 @@ Feature: Login
   Scenario Outline: Login
     Given I am a amazon user login with '<UserName>'
     Examples:
-      | UserName                  |
-      | swargam.ramya11@gmail.com |
+      | UserName |
+      | email    |

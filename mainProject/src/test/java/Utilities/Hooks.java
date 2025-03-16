@@ -1,7 +1,6 @@
 package Utilities;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.*;
 import io.cucumber.java.Scenario;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class Hooks {
     @Before
     public void setup() throws IOException {
         System.out.println("Before");
-        Runtime.getRuntime().exec("TASKILL /F /IM chrome.exe");
+        Runtime.getRuntime().exec("TASKKILL /F /IM chrome.exe");
         driver =  new BrowserDriver();
     }
 
