@@ -3,6 +3,7 @@ package Utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -14,6 +15,7 @@ import static Utilities.ReusableMethods.threadSleep;
 public class BrowserDriver {
 
     public static WebDriver driver;
+    public static WebDriverWait webDriverWait;
     public static ChromeOptions options;
 
     public BrowserDriver() {
