@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -262,5 +263,36 @@ public class ReusableMethods {
         Date currentDate = new Date();
         SimpleDateFormat simpleFormat = new SimpleDateFormat(format);
         return simpleFormat.format(currentDate);
+    }
+
+    public static String addDaysToCurrentDate(int numberOfDasToBeAdded, String format) {
+        return LocalDate.parse(getCurrentDate(format)).plusDays(numberOfDasToBeAdded).toString();
+    }
+
+    public static String convertDateToParticularFormat(String inputFormat, String outputFormat, String date) {
+        SimpleDateFormat inputformat = new SimpleDateFormat(inputFormat);
+        SimpleDateFormat outputformat = new SimpleDateFormat(outputFormat);
+        Date date1;
+
+        try {
+            date1 = inputformat.parse(date);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return outputformat.format(date1);
+    }
+
+    public static void refreshPage() {
+        driver.navigate().refresh();
+    }
+
+    public static String decryptPassword(String password) {
+        byte[] decrypt = Base64.getDecoder().decode(password);
+        return new String(decrypt);
+    }
+
+    public static String encryptPassword(String password) {
+        byte[] encrypt = Base64.getEncoder().encode(password.getBytes());
+        return new String(encrypt);
     }
 }
