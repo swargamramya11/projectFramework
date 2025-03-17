@@ -15,6 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static Utilities.BrowserDriver.*;
+import static Utilities.GlobalVariables.ScenarioContext.setContext;
+import static Utilities.GlobalVariables.Context.*;
 import static Utilities.Props.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
@@ -22,28 +24,16 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class ReusableMethods {
 
-    public static void deleteRequiredFolder(String path) throws IOException {
-        String filePath = System.getProperty("user.dir") + path;
-        File file = new File(filePath);
-        FileUtils.deleteDirectory(file);
-        file.delete();
-    }
+    //Screenshots
 
     public static byte[] takesScreenshotAsByte() {
         byte[] screenshot = ((TakesScreenshot) BrowserDriver.getWebDriver()).getScreenshotAs(OutputType.BYTES);
         return screenshot;
     }
 
-    public static void threadSleep(long time) {
-        try {
-            Thread.sleep(time);
-        } catch (Exception e) {
-
-        }
-    }
-
-    public static String getProp(String propertyName) {
-        return properties.getProperty(propertyName);
+    public static File takesScreenshotAsFile() {
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        return screenshot;
     }
 
     public static String createRandomStringWithDateAndTime(int length) {
@@ -239,6 +229,14 @@ public class ReusableMethods {
         Actions builder = new Actions(driver);
         builder.moveToElement(we).perform();
     }
+    //Waits
+
+    public static void threadSleep(long time) {
+        try {
+            Thread.sleep(time);
+        } catch (Exception e) {
+        }
+    }
 
     public static void waitForExpectedElement(By by) {
         webDriverWait.until(visibilityOfElementLocated(by));
@@ -282,9 +280,7 @@ public class ReusableMethods {
         return outputformat.format(date1);
     }
 
-    public static void refreshPage() {
-        driver.navigate().refresh();
-    }
+    //Encrypt and decrypt password
 
     public static String decryptPassword(String password) {
         byte[] decrypt = Base64.getDecoder().decode(password);
@@ -294,5 +290,56 @@ public class ReusableMethods {
     public static String encryptPassword(String password) {
         byte[] encrypt = Base64.getEncoder().encode(password.getBytes());
         return new String(encrypt);
+    }
+
+    //Iframes
+
+    public static void switchToFrameByXpath(By by) {
+        WebElement iframe = driver.findElement(by);
+        driver.switchTo().frame(iframe);
+    }
+
+    //Window Handle
+
+    public static String storeMainWindow() {
+        String mainWidow = driver.getWindowHandle();
+        setContext(MAINWINDOW, mainWidow);
+        return mainWidow;
+    }
+
+    public static void switchToNewWindow(int tabNumber) {
+        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
+        String tabName = tab.get(tabNumber);
+        driver.switchTo().window(tabName);
+    }
+
+    public static void switchToMainWindow(String mainWindowHandle) {
+        driver.switchTo().window(mainWindowHandle);
+    }
+
+    //Extra methods
+
+    public static void refreshPage() {
+        driver.navigate().refresh();
+    }
+
+    public static void clearTextBox(By by) {
+        driver.findElement(by).clear();
+    }
+
+    public static void resizeScreen(String size) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.body.style.zoom'" + size + "';");
+    }
+
+    public static String getProp(String propertyName) {
+        return properties.getProperty(propertyName);
+    }
+
+    public static void deleteRequiredFolder(String path) throws IOException {
+        String filePath = System.getProperty("user.dir") + path;
+        File file = new File(filePath);
+        FileUtils.deleteDirectory(file);
+        file.delete();
     }
 }
