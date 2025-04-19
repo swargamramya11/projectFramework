@@ -43,9 +43,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     public static void afterSuite() throws IOException {
         System.out.println("After Suite");
 
-        String newDir = System.getProperty("user.dir") + "target\\allure";
+        String newDir = System.getProperty("user.dir") + "\\target\\allure";
         Runtime.getRuntime().exec("cmd.exe /c cd \"" + newDir + "\" & start cmd.exe /k \"allure generate --single-file allure-results --clean\"");
-        threadSleep(8000);
+        threadSleep(10000);
         Runtime.getRuntime().exec("TASKKILL /F /IM cmd.exe");
     }
 }
