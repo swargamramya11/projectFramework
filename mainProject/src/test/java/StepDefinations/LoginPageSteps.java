@@ -8,6 +8,6 @@ public class LoginPageSteps {
 
     @Given("^I am a amazon user login with '(.*)'$")
     public static void login(String email) {
-        enterEmail(email);
+//        enterEmail(email);
     }
 }

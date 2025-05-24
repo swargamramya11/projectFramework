@@ -50,7 +50,22 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.29.0</version>
+            <version>4.32.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>4.32.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>4.32.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.32.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -63,11 +78,6 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>4.29.0</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -95,6 +105,12 @@
             <version>7.21.1</version>
         </dependency>
         <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.9.3</version>
@@ -109,6 +125,11 @@
             <artifactId>extentreports-cucumber7-adapter</artifactId>
             <version>1.14.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>9.4.0</version>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -119,7 +140,6 @@
                 <properties.path>/environments/amazon-uat1.properties</properties.path>
             </properties>
         </profile>
-
         <profile>
             <id>amazon-uat2</id>
             <properties>
@@ -128,5 +148,23 @@
             </properties>
         </profile>
 
+        <profile>
+            <id>native-mobile</id>
+            <properties>
+                <env>native-mobile</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>web-mobile</id>
+            <properties>
+                <env>web-mobile</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>windows</id>
+            <properties>
+                <env>windows</env>
+            </properties>
+        </profile>
     </profiles>
 </project>

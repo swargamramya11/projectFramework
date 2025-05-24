@@ -4,6 +4,7 @@ import io.cucumber.java.*;
 import io.cucumber.java.Scenario;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static Utilities.BrowserDriver.close;
 import static Utilities.ReusableMethods.takesScreenshotAsByte;
@@ -14,7 +15,7 @@ public class Hooks {
     public static  Scenario scenario;
 
     @Before
-    public void setup() throws IOException {
+    public void setup() throws IOException, URISyntaxException {
         System.out.println("Before");
         Runtime.getRuntime().exec("TASKKILL /F /IM chrome.exe");
         driver =  new BrowserDriver();
