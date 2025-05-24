@@ -1,6 +1,5 @@
 package Utilities;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -22,30 +21,30 @@ public class BrowserDriver {
     public static AndroidDriver androidDriver;
     public static WebDriverWait webDriverWait;
     public static ChromeOptions options;
+    public static UiAutomator2Options uiOptions;
     public static String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\chromedriver.exe";
     public static String apkFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\apkFiles\\apk.apk";
 
-    public BrowserDriver() throws MalformedURLException, URISyntaxException {
+    public BrowserDriver() throws MalformedURLException {
         launchBrowserAndNavigateToUrl();
     }
 
-    public static void launchBrowserAndNavigateToUrl() throws MalformedURLException, URISyntaxException {
-        if (env.equals("windows")) {
-            driver = new ChromeDriver(getChromeOptions());
-            threadSleep(6000);
-            driver.get(getProp("url"));
-        } else if (env.equals("native-mobile")) {
-            UiAutomator2Options cap = getUiAutomator2OptionsOfNativeApp();
+    public static void launchBrowserAndNavigateToUrl() throws MalformedURLException {
+        URL url = new URL("http://0.0.0.0:4723");
 
-            URL url = new URL("http://0.0.0.0:4723");
-            androidDriver = new AndroidDriver(url, cap);
-        } else if (env.equals("web-mobile")) {
-            UiAutomator2Options capweb = getUiAutomator2OptionsOfWebMobile();
-
-            URL url = new URL("http://0.0.0.0:4723");
-            androidDriver = new AndroidDriver(url, capweb);
-
-            androidDriver.get(getProp("url"));
+        switch (env) {
+            case "windows":
+                driver = new ChromeDriver(getChromeOptions());
+                driver.get(getProp("url"));
+                break;
+            case "native-mobile":
+                uiOptions = getUiAutomator2OptionsOfNativeApp();
+                androidDriver = new AndroidDriver(url, uiOptions);
+                break;
+            case "web-mobile":
+                uiOptions = getUiAutomator2OptionsOfWebMobile();
+                androidDriver = new AndroidDriver(url, uiOptions);
+                androidDriver.get(getProp("url"));
         }
     }
 
@@ -66,20 +65,20 @@ public class BrowserDriver {
     }
 
     private static UiAutomator2Options getUiAutomator2OptionsOfWebMobile() {
-        UiAutomator2Options options = new UiAutomator2Options();
-        options.setCapability("browserName", "Chrome");
-        options.setDeviceName("RamyaEmulator");
-        options.setChromedriverExecutable(chromeDriverPath);
+        uiOptions = new UiAutomator2Options();
+        uiOptions.setCapability("browserName", "Chrome");
+        uiOptions.setDeviceName("RamyaEmulator");
+        uiOptions.setChromedriverExecutable(chromeDriverPath);
 
-        return options;
+        return uiOptions;
     }
 
     private static UiAutomator2Options getUiAutomator2OptionsOfNativeApp() {
-        UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("RamyaEmulator");
-        options.setApp(apkFilePath);
+        uiOptions = new UiAutomator2Options();
+        uiOptions.setDeviceName("RamyaEmulator");
+        uiOptions.setApp(apkFilePath);
 
-        return options;
+        return uiOptions;
     }
 
     public static void close() {
