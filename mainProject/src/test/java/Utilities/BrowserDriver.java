@@ -19,7 +19,6 @@ import static Utilities.ReusableMethods.*;
 public class BrowserDriver {
 
     public static WebDriver driver;
-    public static AppiumDriver appiumDriver;
     public static AndroidDriver androidDriver;
     public static WebDriverWait webDriverWait;
     public static ChromeOptions options;
@@ -39,7 +38,7 @@ public class BrowserDriver {
             UiAutomator2Options cap = getUiAutomator2OptionsOfNativeApp();
 
             URL url = new URL("http://0.0.0.0:4723");
-            appiumDriver = new AndroidDriver(url, cap);
+            androidDriver = new AndroidDriver(url, cap);
         } else if (env.equals("web-mobile")) {
             UiAutomator2Options capweb = getUiAutomator2OptionsOfWebMobile();
 
