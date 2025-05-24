@@ -72,7 +72,7 @@ public class BrowserDriver {
     private static UiAutomator2Options getUiAutomator2OptionsOfWebMobile() {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setCapability("browserName", "Chrome");
-        options.setDeviceName("Pixel 9");
+        options.setDeviceName("RamyaEmulator");
         options.setChromedriverExecutable(chromeDriverPath);
 
         return options;
@@ -80,7 +80,7 @@ public class BrowserDriver {
 
     private static UiAutomator2Options getUiAutomator2OptionsOfNativeApp() {
         UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Pixel 9");
+        options.setDeviceName("RamyaEmulator");
         options.setApp(apkFilePath);
 
         return options;
