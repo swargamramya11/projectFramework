@@ -5,13 +5,10 @@ import io.appium.java_client.android.AndroidDriver;
 
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.net.*;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;

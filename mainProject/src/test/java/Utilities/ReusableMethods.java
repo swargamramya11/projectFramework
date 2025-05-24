@@ -3,23 +3,19 @@ package Utilities;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.*;
+import java.text.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static Utilities.BrowserDriver.*;
-import static Utilities.GlobalVariables.ScenarioContext.setContext;
+import static Utilities.GlobalVariables.ScenarioContext.*;
 import static Utilities.GlobalVariables.Context.*;
 import static Utilities.Props.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class ReusableMethods {

@@ -1,16 +1,14 @@
 package Utilities;
 
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.*;
 import io.cucumber.java.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 
-import static Utilities.BrowserDriver.close;
-import static Utilities.Props.env;
-import static Utilities.ReusableMethods.takesScreenshotAsByte;
+import static Utilities.BrowserDriver.*;
+import static Utilities.Props.*;
+import static Utilities.ReusableMethods.*;
 
 public class Hooks {
 
