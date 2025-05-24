@@ -3,7 +3,6 @@ package Utilities;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.cucumber.java.*;
-import io.cucumber.java.Scenario;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +15,6 @@ import static Utilities.ReusableMethods.takesScreenshotAsByte;
 public class Hooks {
 
     public static BrowserDriver driver;
-    public static Scenario scenario;
     public static AppiumDriverLocalService service;
 
     @Before
