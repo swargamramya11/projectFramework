@@ -68,6 +68,11 @@
             <version>4.32.0</version>
         </dependency>
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.11.0</version>
@@ -164,6 +169,12 @@
             <id>windows</id>
             <properties>
                 <env>windows</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>grid</id>
+            <properties>
+                <env>grid</env>
             </properties>
         </profile>
     </profiles>

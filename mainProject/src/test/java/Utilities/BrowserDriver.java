@@ -5,8 +5,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.net.*;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -18,18 +21,19 @@ import static Utilities.ReusableMethods.*;
 public class BrowserDriver {
 
     public static WebDriver driver;
-    public static AndroidDriver androidDriver;
     public static WebDriverWait webDriverWait;
     public static ChromeOptions options;
     public static UiAutomator2Options uiOptions;
+    public static DesiredCapabilities gridCapabilities;
     public static String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\chromedriver.exe";
     public static String apkFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\apkFiles\\apk.apk";
+    public static String seleniumServerPath = System.getProperty("user.dir") + "\\src\\test\\resources\\gridFiles\\selenium-server-4.32.0.jar";
 
-    public BrowserDriver() throws MalformedURLException {
+    public BrowserDriver() throws IOException {
         launchBrowserAndNavigateToUrl();
     }
 
-    public static void launchBrowserAndNavigateToUrl() throws MalformedURLException {
+    public static void launchBrowserAndNavigateToUrl() throws IOException {
         URL url = new URL("http://0.0.0.0:4723");
 
         switch (env) {
@@ -39,12 +43,20 @@ public class BrowserDriver {
                 break;
             case "native-mobile":
                 uiOptions = getUiAutomator2OptionsOfNativeApp();
-                androidDriver = new AndroidDriver(url, uiOptions);
+                driver = new AndroidDriver(url, uiOptions);
                 break;
             case "web-mobile":
                 uiOptions = getUiAutomator2OptionsOfWebMobile();
-                androidDriver = new AndroidDriver(url, uiOptions);
-                androidDriver.get(getProp("url"));
+                driver = new AndroidDriver(url, uiOptions);
+                driver.get(getProp("url"));
+                break;
+            case "grid":
+                gridCapabilities = gridCapabilities();
+
+                driver = new RemoteWebDriver(new URL("http://localhost:4444"), gridCapabilities);
+                driver.get(getProp("url"));
+                driver.manage().window().maximize();
+                break;
         }
     }
 
@@ -81,13 +93,20 @@ public class BrowserDriver {
         return uiOptions;
     }
 
+    private static DesiredCapabilities gridCapabilities() {
+        DesiredCapabilities gridCapabilities = new DesiredCapabilities();
+        gridCapabilities.setBrowserName("chrome");
+
+        return gridCapabilities;
+    }
+
     public static void close() {
-        if (env.equals("windows")) {
+        if (env.equals("windows") || env.equals("grid")) {
             driver.quit();
         } else if (env.equals("native-mobile")) {
 
         } else if (env.equals("web-mobile")) {
-            androidDriver.quit();
+            driver.quit();
         }
     }
 }
