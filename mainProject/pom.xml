@@ -14,7 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <build>
         <plugins>
             <plugin>
@@ -152,7 +151,6 @@
                 <properties.path>/environments/amazon-uat2.properties</properties.path>
             </properties>
         </profile>
-
         <profile>
             <id>native-mobile</id>
             <properties>
