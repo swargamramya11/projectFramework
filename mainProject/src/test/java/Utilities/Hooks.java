@@ -23,16 +23,11 @@ public class Hooks {
         System.out.println("Before");
 
         if (env.contains("mobile")) {
-            service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\swarg\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js")).
-                    withIPAddress("127.0.0.1").usingPort(4723).build();
+            service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\swarg\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js")).withIPAddress("127.0.0.1").usingPort(4723).build();
             service.start();
         } else if (env.contains("grid")) {
 //            Start hub
-            hubBuilder = new ProcessBuilder(
-                    "java",
-                    "-jar",
-                    seleniumServerPath,
-                    "hub");
+            hubBuilder = new ProcessBuilder("java", "-jar", seleniumServerPath, "hub");
             hubBuilder.inheritIO();
             hubProcess = hubBuilder.start();
             System.out.println("Hub Started");
@@ -40,13 +35,7 @@ public class Hooks {
             threadSleep(10000);
 
 //            Start Node
-            nodeBuilder = new ProcessBuilder(
-                    "java",
-                    "-jar",
-                    seleniumServerPath,
-                    "node",
-                    "--hub",
-                    "http://localhost:4444");
+            nodeBuilder = new ProcessBuilder("java", "-jar", seleniumServerPath, "node", "--hub", "http://localhost:4444");
             nodeBuilder.inheritIO();
             nodeProcess = nodeBuilder.start();
             System.out.println("Node Started");
@@ -62,10 +51,8 @@ public class Hooks {
     public void tearDown(Scenario scenario) throws IOException {
         System.out.println("After");
 
-        if (!env.contains("mobile")) {
-            if (scenario.isFailed()) {
-                scenario.attach(takesScreenshotAsByte(), "image/png", scenario.getName());
-            }
+        if (scenario.isFailed()) {
+            scenario.attach(takesScreenshotAsByte(), "image/png", scenario.getName());
         }
 
         close();

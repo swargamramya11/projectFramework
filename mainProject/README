@@ -4,3 +4,5 @@ Node command for standalone : java -jar selenium-server-4.32.0.jar node --detect
 Node command for another machine : java -jar selenium-server-4.32.0.jar node --detect-drivers true --publish-events tcp://192.168.0.103:4442 --subscribe-events cp://192.168.0.103:4443
 
 Note: For Selenium grid if we want to add another machine as node to hub then both machines should be connected to same network then only it will connect
+
+Link for native application gestures: https://github.com/appium/appium/blob/1.x/docs/en/writing-running-appium/android/android-mobile-gestures.md

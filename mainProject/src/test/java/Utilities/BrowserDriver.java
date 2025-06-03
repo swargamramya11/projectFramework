@@ -26,7 +26,7 @@ public class BrowserDriver {
     public static UiAutomator2Options uiOptions;
     public static DesiredCapabilities gridCapabilities;
     public static String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\chromedriver.exe";
-    public static String apkFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\apkFiles\\apk.apk";
+    public static String apkFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\apkFiles\\ApiDemos-debug.apk";
     public static String seleniumServerPath = System.getProperty("user.dir") + "\\src\\test\\resources\\gridFiles\\selenium-server-4.32.0.jar";
 
     public BrowserDriver() throws IOException {
@@ -101,12 +101,6 @@ public class BrowserDriver {
     }
 
     public static void close() {
-        if (env.equals("windows") || env.equals("grid")) {
-            driver.quit();
-        } else if (env.equals("native-mobile")) {
-
-        } else if (env.equals("web-mobile")) {
-            driver.quit();
-        }
+        driver.quit();
     }
 }

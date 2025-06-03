@@ -11,7 +11,7 @@ import static Utilities.ReusableMethods.*;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"Utilities", "StepDefinations"},
-        tags = "@test1",
+        tags = "@appiumNative2",
         plugin = {"pretty", "html:target/cucumber-reports",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -36,7 +36,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     @BeforeSuite
     public static void beforeSuite() throws IOException {
         System.out.println("Before Suite");
-        deleteRequiredFolder("target\\allure");
+        deleteRequiredFolder("\\target\\allure");
     }
 
     @AfterSuite
