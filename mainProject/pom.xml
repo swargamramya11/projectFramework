@@ -154,25 +154,25 @@
         <profile>
             <id>native-mobile</id>
             <properties>
-                <env>native-mobile</env>
+                <deviceType>native-mobile</deviceType>
             </properties>
         </profile>
         <profile>
             <id>web-mobile</id>
             <properties>
-                <env>web-mobile</env>
+                <deviceType>web-mobile</deviceType>
             </properties>
         </profile>
         <profile>
             <id>windows</id>
             <properties>
-                <env>windows</env>
+                <deviceType>windows</deviceType>
             </properties>
         </profile>
         <profile>
             <id>grid</id>
             <properties>
-                <env>grid</env>
+                <deviceType>grid</deviceType>
             </properties>
         </profile>
     </profiles>

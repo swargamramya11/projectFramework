@@ -10,6 +10,7 @@ public class Props {
     public static Properties environmentProps;
     public static Properties properties;
     public static String env;
+    public static String deviceType;
 
     static {
         loadRunConfigProps("/environment.properties");
@@ -31,5 +32,6 @@ public class Props {
         }
 
         env = environmentProps.getProperty("env");
+        deviceType = environmentProps.getProperty("deviceType");
     }
 }

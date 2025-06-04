@@ -6,12 +6,14 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
+import static Utilities.BrowserDriver.*;
+import static Utilities.Props.*;
 import static Utilities.ReusableMethods.*;
 
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"Utilities", "StepDefinations"},
-        tags = "@appiumNative2",
+        tags = "@appiumNativeApp",
         plugin = {"pretty", "html:target/cucumber-reports",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -37,15 +39,29 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     public static void beforeSuite() throws IOException {
         System.out.println("Before Suite");
         deleteRequiredFolder("\\target\\allure");
+
+        if (deviceType.contains("mobile")) {
+            startAppiumServer();
+        } else if (deviceType.contains("grid")) {
+            startHub();
+            startNode();
+        }
+
+        threadSleep(10000);
     }
 
     @AfterSuite
     public static void afterSuite() throws IOException {
         System.out.println("After Suite");
 
-        String newDir = System.getProperty("user.dir") + "\\target\\allure";
-        Runtime.getRuntime().exec("cmd.exe /c cd \"" + newDir + "\" & start cmd.exe /k \"allure generate --single-file allure-results --clean\"");
-        threadSleep(10000);
-        Runtime.getRuntime().exec("TASKKILL /F /IM cmd.exe");
+        if (deviceType.contains("mobile")) {
+            stopAppiumServer();
+        } else if (deviceType.contains("grid")) {
+            stopNode();
+            threadSleep(10000);
+            stophub();
+        }
+
+        generateAllureReport();
     }
 }
