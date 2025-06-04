@@ -331,7 +331,7 @@ public class ReusableMethods {
     }
 
     public static String getProp(String propertyName) {
-        return environmentProps.getProperty(propertyName);
+        return properties.getProperty(propertyName);
     }
 
     public static void deleteRequiredFolder(String path) throws IOException {

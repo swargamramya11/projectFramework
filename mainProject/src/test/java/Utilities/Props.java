@@ -26,8 +26,8 @@ public class Props {
 
         properties = new Properties();
         try (InputStream inputStream = Props.class.getResourceAsStream(environmentProps.getProperty("properties.path"))) {
-            environmentProps.load(inputStream);
-            environmentProps.list(out);
+            properties.load(inputStream);
+            properties.list(out);
         } catch (IOException e) {
         }
 

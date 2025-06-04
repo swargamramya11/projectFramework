@@ -155,24 +155,28 @@
             <id>native-mobile</id>
             <properties>
                 <deviceType>native-mobile</deviceType>
+                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
             <id>web-mobile</id>
             <properties>
                 <deviceType>web-mobile</deviceType>
+                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
             <id>windows</id>
             <properties>
                 <deviceType>windows</deviceType>
+                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
             <id>grid</id>
             <properties>
                 <deviceType>grid</deviceType>
+                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
     </profiles>
