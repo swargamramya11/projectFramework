@@ -1,5 +1,6 @@
 package StepDefinations;
 
+import Pages.appiumNativeApp;
 import io.cucumber.java.en.*;
 
 import static Pages.appiumNativeApp.*;
@@ -7,7 +8,7 @@ import static Pages.appiumNativeApp.*;
 public class appiumNativeAppSteps {
 
     @Given("^I am on api demos app and click on '(.*)'$")
-    public static void demo(String option) {
+    public void demo(String option) {
         iselectRequiredOption(option);
     }
 

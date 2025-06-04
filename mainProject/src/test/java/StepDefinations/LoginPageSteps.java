@@ -7,7 +7,7 @@ import static Pages.LoginPage.enterEmail;
 public class LoginPageSteps {
 
     @Given("^I am a amazon user login with '(.*)'$")
-    public static void login(String email) {
+    public void login(String email) {
 //        enterEmail(email);
     }
 }

@@ -136,7 +136,7 @@ public class ReusableMethods {
 
     //Enter data
 
-    public static void enter(final By by, String data) {
+    public static void enterData(final By by, String data) {
         driver.findElement(by).sendKeys(data);
     }
 
@@ -341,9 +341,9 @@ public class ReusableMethods {
         file.delete();
     }
 
-    public static void longPressAction(WebElement ele) {
+    public static void longPressAction(By ele) {
         ((JavascriptExecutor)driver).executeScript("mobile: longClickGesture",
-                ImmutableMap.of("elementId",((RemoteWebElement)ele).getId(),
+                ImmutableMap.of("elementId",((RemoteWebElement) driver.findElement(ele)).getId(),
                         "duration",2000));
     }
 
@@ -358,17 +358,17 @@ public class ReusableMethods {
         } while (canScrollMore);
     }
 
-    public static void swipeAction(WebElement ele,String direction) {
+    public static void swipeAction(By ele,String direction) {
         ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
-                "elementId", ((RemoteWebElement)ele).getId(),
+                "elementId", ((RemoteWebElement)driver.findElement(ele)).getId(),
                 "direction", direction,
                 "percent", 0.75
         ));
     }
 
-    public static void dragAndDropAction(WebElement source, int x, int y) {
+    public static void dragAndDropAction(By source, int x, int y) {
         ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
-                "elementId", ((RemoteWebElement) source).getId(),
+                "elementId", ((RemoteWebElement) driver.findElement(source)).getId(),
                 "endX", x,
                 "endY", y
         ));

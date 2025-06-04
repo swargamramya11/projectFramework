@@ -4,12 +4,12 @@ Feature: Native application
   Scenario Outline: Native application automation
     Given I am on api demos app and click on 'Preference'
     Then I am on api demos app and click on '3. Preference dependencies'
-    Then I select 'wifi' checkbox
+    Then I select 'WiFi' checkbox
     Then I click on 'WiFi settings'
-    Then I enter data in '<WIFi Settings>'
+    Then I enter data in '<WiFi Settings>'
     Then I click on 'Ok'
     Examples:
-      | WIFi Settings |
+      | WiFi Settings |
       | ramya         |
 
   @appiumNative2 @appiumNativeApp
@@ -22,17 +22,17 @@ Feature: Native application
   @appiumNative3 @appiumNativeApp
   Scenario: Native application - Scroll
     Given I am on api demos app and click on 'Views'
-    Then I 'scroll' to 'WebView'
+    Then I 'Scroll' to 'WebView'
 
   @appiumNative4 @appiumNativeApp
   Scenario: Native application - Swipe
     Given I am on api demos app and click on 'Views'
     Given I am on api demos app and click on 'Gallery'
     Given I am on api demos app and click on '1. Photos'
-    Then I 'swipe' to 'Photos'
+    Then I 'Swipe' to 'Photos'
 
   @appiumNative5 @appiumNativeApp
   Scenario: Native application - Drag and drop
     Given I am on api demos app and click on 'Views'
     Given I am on api demos app and click on 'Drag and Drop'
-    Then I 'drag and drop' to 'destination'
+    Then I 'Drag and Drop' to 'destination'
