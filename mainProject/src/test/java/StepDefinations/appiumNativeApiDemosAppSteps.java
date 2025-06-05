@@ -1,11 +1,10 @@
 package StepDefinations;
 
-import Pages.appiumNativeApp;
 import io.cucumber.java.en.*;
 
-import static Pages.appiumNativeApp.*;
+import static Pages.appiumNativeApiDemosApp.*;
 
-public class appiumNativeAppSteps {
+public class appiumNativeApiDemosAppSteps {
 
     @Given("^I am on api demos app and click on '(.*)'$")
     public void demo(String option) {
@@ -30,5 +29,10 @@ public class appiumNativeAppSteps {
     @Given("^I '(.*)' to '(.*)'$")
     public static void perform_Required_Action(String operationToBePerformed, String element) {
         performRequiredAction(operationToBePerformed, element);
+    }
+
+    @Given("^I directly navigate to '(.*)'$")
+    public void inavigateToRequiredPage(String pageName) {
+        navigateToRequiredPageDirectly(pageName);
     }
 }

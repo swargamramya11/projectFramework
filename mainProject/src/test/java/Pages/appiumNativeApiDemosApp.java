@@ -7,7 +7,7 @@ import org.testng.Assert;
 import static Utilities.BrowserDriver.getWebDriver;
 import static Utilities.ReusableMethods.*;
 
-public class appiumNativeApp {
+public class appiumNativeApiDemosApp {
     static By wifiCheckbox = By.id("android:id/checkbox");
     static By wifiTextbox = By.id("android:id/edit");
     static By wifiSetting = By.xpath("//android.widget.ListView[@resource-id='android:id/list']/android.widget.LinearLayout[2]");
@@ -29,17 +29,23 @@ public class appiumNativeApp {
     public static void IClickOnWifiSettings(String option) {
         switch (option) {
             case "WiFi settings":
+                landScape();
                 clickElement(wifiSetting);
                 Assert.assertEquals(getText(alertTitle), option);
                 break;
             case "Ok":
                 clickElementWithIndex(AppiumBy.className("android.widget.Button"), 1);
+                pressBack();
+                pressHome();
                 break;
         }
     }
 
     public static void iEnterDataInTextBox(String option) {
         enterData(wifiTextbox, option);
+        setClipBoardData("Rahul Wifi");
+        enterData(wifiTextbox, getClipBoardData());
+        pressEnter();
     }
 
     public static void performRequiredAction(String operationToBePerformed, String element) {
@@ -60,6 +66,14 @@ public class appiumNativeApp {
                 threadSleep(2000);
                 Assert.assertEquals(getText(resultOfDrag), "Dropped!");
                 break;
+        }
+    }
+
+    public static void navigateToRequiredPageDirectly(String pageName) {
+        switch (pageName) {
+            case "3. Preference dependencies":
+                String ac = "io.appium.android.apis/io.appium.android.apis.preference.PreferenceDependencies";
+                startActivity(ac);
         }
     }
 }

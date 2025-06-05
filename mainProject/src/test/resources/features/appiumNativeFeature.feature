@@ -36,3 +36,14 @@ Feature: Native application
     Given I am on api demos app and click on 'Views'
     Given I am on api demos app and click on 'Drag and Drop'
     Then I 'Drag and Drop' to 'destination'
+
+  @appiumNative6 @appiumNativeApp
+  Scenario Outline: Native application - Navigate to particular page directly without navigation from initial page
+    Given I directly navigate to '3. Preference dependencies'
+    Then I select 'WiFi' checkbox
+    Then I click on 'WiFi settings'
+    Then I enter data in '<WiFi Settings>'
+    Then I click on 'Ok'
+    Examples:
+      | WiFi Settings |
+      | ramya         |

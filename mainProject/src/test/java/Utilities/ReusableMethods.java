@@ -1,6 +1,9 @@
 package Utilities;
 
 import com.google.common.collect.ImmutableMap;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -342,9 +345,9 @@ public class ReusableMethods {
     }
 
     public static void longPressAction(By ele) {
-        ((JavascriptExecutor)driver).executeScript("mobile: longClickGesture",
-                ImmutableMap.of("elementId",((RemoteWebElement) driver.findElement(ele)).getId(),
-                        "duration",2000));
+        ((JavascriptExecutor) driver).executeScript("mobile: longClickGesture",
+                ImmutableMap.of("elementId", ((RemoteWebElement) driver.findElement(ele)).getId(),
+                        "duration", 2000));
     }
 
     public static void scrollToEndAction() {
@@ -358,9 +361,9 @@ public class ReusableMethods {
         } while (canScrollMore);
     }
 
-    public static void swipeAction(By ele,String direction) {
+    public static void swipeAction(By ele, String direction) {
         ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
-                "elementId", ((RemoteWebElement)driver.findElement(ele)).getId(),
+                "elementId", ((RemoteWebElement) driver.findElement(ele)).getId(),
                 "direction", direction,
                 "percent", 0.75
         ));
@@ -372,5 +375,34 @@ public class ReusableMethods {
                 "endX", x,
                 "endY", y
         ));
+    }
+
+    public static void pressEnter() {
+        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public static void pressHome() {
+        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.HOME));
+    }
+
+    public static void pressBack() {
+        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
+    }
+
+    public static void landScape() {
+        DeviceRotation landScape = new DeviceRotation(0, 0, 90);
+        ((AndroidDriver) driver).rotate(landScape);
+    }
+
+    public static String getClipBoardData() {
+        return ((AndroidDriver) driver).getClipboardText();
+    }
+
+    public static void setClipBoardData(String text) {
+        ((AndroidDriver) driver).setClipboardText(text);
+    }
+
+    public static void startActivity(String activity) {
+        ((JavascriptExecutor) driver).executeScript("mobile: startActivity", ImmutableMap.of("intent", activity));
     }
 }

@@ -6,3 +6,4 @@ Node command for another machine : java -jar selenium-server-4.32.0.jar node --d
 Note: For Selenium grid if we want to add another machine as node to hub then both machines should be connected to same network then only it will connect
 
 Link for native application gestures: https://github.com/appium/appium/blob/1.x/docs/en/writing-running-appium/android/android-mobile-gestures.md
+Link : https://testsigma.com/docs/troubleshooting/mobile-apps/app-package-and-activity/
