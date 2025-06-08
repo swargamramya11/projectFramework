@@ -24,12 +24,11 @@ import static Utilities.ReusableMethods.*;
 public class BrowserDriver {
 
     public static WebDriver driver;
-    public static WebDriverWait webDriverWait;
+    public static WebDriverWait webDriverWait = new WebDriverWait(driver,Duration.ofSeconds(10));
     public static ChromeOptions options;
     public static UiAutomator2Options uiOptions;
     public static DesiredCapabilities gridCapabilities;
     public static String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\chromedriver.exe";
-    public static String apkFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\apkFiles\\ApiDemos-debug.apk";
     public static String seleniumServerPath = System.getProperty("user.dir") + "\\src\\test\\resources\\gridFiles\\selenium-server-4.32.0.jar";
     public static String appiumServerPath = "C:\\Users\\swarg\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
     public static AppiumDriverLocalService service;
@@ -97,7 +96,7 @@ public class BrowserDriver {
     private static UiAutomator2Options getUiAutomator2OptionsOfNativeApp() {
         uiOptions = new UiAutomator2Options();
         uiOptions.setDeviceName("RamyaEmulator");
-        uiOptions.setApp(apkFilePath);
+        uiOptions.setApp(apkPath);
 
         return uiOptions;
     }

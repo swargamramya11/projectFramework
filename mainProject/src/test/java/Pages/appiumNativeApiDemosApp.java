@@ -54,7 +54,7 @@ public class appiumNativeApiDemosApp {
                 longPressAction(longPresselement);
                 break;
             case "Scroll":
-                getWebDriver().findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));"));
+                scrollDownToParticularElement(element);
                 break;
             case "Swipe":
                 Assert.assertEquals(getAttribute(firstPhotoElement, "focusable"), "true");

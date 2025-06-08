@@ -1,6 +1,7 @@
 package Utilities;
 
 import com.google.common.collect.ImmutableMap;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
@@ -404,5 +405,13 @@ public class ReusableMethods {
 
     public static void startActivity(String activity) {
         ((JavascriptExecutor) driver).executeScript("mobile: startActivity", ImmutableMap.of("intent", activity));
+    }
+
+    public static void hideKeyBoard() {
+        ((AndroidDriver) driver).hideKeyboard();
+    }
+
+    public static void scrollDownToParticularElement(String elementName) {
+        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementName + "\"));"));
     }
 }

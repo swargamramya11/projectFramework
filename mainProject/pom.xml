@@ -179,5 +179,17 @@
                 <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
+        <profile>
+            <id>general-store_apk</id>
+            <properties>
+                <apk.path>General-Store.apk</apk.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>apiDemos-debug_apk</id>
+            <properties>
+                <apk.path>ApiDemos-debug.apk</apk.path>
+            </properties>
+        </profile>
     </profiles>
 </project>
