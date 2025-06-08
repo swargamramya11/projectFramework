@@ -2,7 +2,7 @@ package StepDefinations;
 
 import io.cucumber.java.en.Given;
 
-import static Pages.LoginPage.enterEmail;
+import static Pages.LoginPage.*;
 
 public class LoginPageSteps {
 

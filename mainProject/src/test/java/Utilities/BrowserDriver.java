@@ -3,12 +3,10 @@ package Utilities;
 import io.appium.java_client.android.AndroidDriver;
 
 import io.appium.java_client.android.options.UiAutomator2Options;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -24,7 +22,7 @@ import static Utilities.ReusableMethods.*;
 public class BrowserDriver {
 
     public static WebDriver driver;
-    public static WebDriverWait webDriverWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+    public static WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
     public static ChromeOptions options;
     public static UiAutomator2Options uiOptions;
     public static DesiredCapabilities gridCapabilities;

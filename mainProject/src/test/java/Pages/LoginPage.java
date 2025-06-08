@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 
 import static Utilities.GlobalVariables.Context.*;
-import static Utilities.GlobalVariables.ScenarioContext.setContext;
+import static Utilities.GlobalVariables.ScenarioContext.*;
 import static Utilities.ReusableMethods.*;
 
 public class LoginPage {
@@ -13,7 +13,5 @@ public class LoginPage {
     public static void enterEmail(String email) {
         enterData(enteremail, getProp(email));
         setContext(USERNAME, email);
-// To get string form context
-// String email = (String) getContext(USERNAME);
     }
 }
