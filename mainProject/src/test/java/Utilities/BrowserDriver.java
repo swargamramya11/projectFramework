@@ -97,6 +97,7 @@ public class BrowserDriver {
         uiOptions = new UiAutomator2Options();
         uiOptions.setDeviceName("RamyaEmulator");
         uiOptions.setApp(apkPath);
+        uiOptions.setChromedriverExecutable(chromeDriverPath);
 
         return uiOptions;
     }

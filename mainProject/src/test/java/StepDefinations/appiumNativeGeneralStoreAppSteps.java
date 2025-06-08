@@ -1,16 +1,15 @@
 package StepDefinations;
 
-import io.appium.java_client.AppiumBy;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.By;
 
 import static Pages.appiumNativeGeneralStoreApp.*;
 
 public class appiumNativeGeneralStoreAppSteps {
 
-    @Given("^I enter '(.*)'$")
-    public void IEnterData(String option) {
-        iEnterData(option);
+    @Given("^I enter data in below field$")
+    public void IEnterData(DataTable dataTable) {
+        iEnterData(dataTable);
     }
 
     @Given("I select '(.*)' radio button$")
@@ -41,5 +40,35 @@ public class appiumNativeGeneralStoreAppSteps {
     @Given("I wait for '(.*)' title$")
     public void iwaitForElement(String title) {
         iWaitForElement(title);
+    }
+
+    @Given("Get price of all products in cart$")
+    public void get_Price_Of_All_Products() {
+        getPriceOfAllProducts();
+    }
+
+    @Given("Verify total price$")
+    public void verify_Total_Price() {
+        verifyTotalPrice();
+    }
+
+    @Given("I click '(.*)' checkbox$")
+    public void i_Click_On_Checkbox(String option) {
+        iClickOnCheckbox(option);
+    }
+
+    @Given("Get all contexts$")
+    public void get_All_Contexts() {
+        getAllContexts();
+    }
+
+    @Given("Navigate to required '(.*)' context page$")
+    public void navigate_To_Required_Context_Page(String pageName) {
+        navigateToRequiredContextPage(pageName);
+    }
+
+    @Given("I press '(.*)' in mobile$")
+    public void i_Press_Required_Button(String buttonName) {
+        iPressRequiredButton(buttonName);
     }
 }

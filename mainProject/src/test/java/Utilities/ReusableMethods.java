@@ -414,4 +414,17 @@ public class ReusableMethods {
     public static void scrollDownToParticularElement(String elementName) {
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementName + "\"));"));
     }
+
+    public static Double getFormattedAmount(String amount) {
+        Double price = Double.parseDouble(amount.substring(1));
+        return price;
+    }
+
+    public static Set getContextHandles() {
+        return ((AndroidDriver) driver).getContextHandles();
+    }
+
+    public static void navigateToContext(String context) {
+        ((AndroidDriver) driver).context(context);
+    }
 }
