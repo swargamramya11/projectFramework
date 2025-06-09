@@ -12,6 +12,7 @@ public class Props {
     public static String env;
     public static String deviceType;
     public static String apkPath;
+    public static String testingType;
 
     static {
         loadRunConfigProps("/environment.properties");
@@ -35,5 +36,6 @@ public class Props {
         env = environmentProps.getProperty("env");
         deviceType = environmentProps.getProperty("deviceType");
         apkPath = System.getProperty("user.dir") + "\\src\\test\\resources\\apkFiles\\" + environmentProps.getProperty("apk.path");
+        testingType = environmentProps.getProperty("testingType");
     }
 }

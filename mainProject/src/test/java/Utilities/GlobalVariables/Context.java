@@ -4,5 +4,9 @@ package Utilities.GlobalVariables;
 public enum Context {
     USERNAME,
     MAINWINDOW,
-    TOTALSUM;
+    TOTALSUM,
+    RESPONSE,
+    RANDOMSTRING,
+    NEWADDRESS,
+    PARAMS;
 }

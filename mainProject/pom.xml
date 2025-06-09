@@ -134,6 +134,12 @@
             <artifactId>java-client</artifactId>
             <version>9.4.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.5.5</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -155,6 +161,7 @@
             <id>native-mobile</id>
             <properties>
                 <deviceType>native-mobile</deviceType>
+                <testingType>mobile</testingType>
                 <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
@@ -162,13 +169,15 @@
             <id>web-mobile</id>
             <properties>
                 <deviceType>web-mobile</deviceType>
+                <testingType>mobile</testingType>
                 <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
-            <id>windows</id>
+            <id>desktop-windows</id>
             <properties>
-                <deviceType>windows</deviceType>
+                <deviceType>desktop-windows</deviceType>
+                <testingType>desktop</testingType>
                 <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
@@ -189,6 +198,13 @@
             <id>apiDemos-debug_apk</id>
             <properties>
                 <apk.path>ApiDemos-debug.apk</apk.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>api</id>
+            <properties>
+                <testingType>api</testingType>
+                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
     </profiles>

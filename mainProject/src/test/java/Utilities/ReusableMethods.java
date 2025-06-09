@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.restassured.path.json.JsonPath;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -58,6 +59,7 @@ public class ReusableMethods {
             sb.append(randomChar);
         }
 
+        setContext(RANDOMSTRING, sb.toString());
         return sb.toString();
     }
 
@@ -426,5 +428,9 @@ public class ReusableMethods {
 
     public static void navigateToContext(String context) {
         ((AndroidDriver) driver).context(context);
+    }
+
+    public static JsonPath rawToJson(String response) {
+        return new JsonPath(response);
     }
 }

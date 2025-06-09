@@ -43,7 +43,7 @@ public class BrowserDriver {
         URL url = new URL("http://0.0.0.0:4723");
 
         switch (deviceType) {
-            case "windows":
+            case "desktop-windows":
                 driver = new ChromeDriver(getChromeOptions());
                 driver.get(getProp("url"));
                 break;
@@ -108,7 +108,10 @@ public class BrowserDriver {
     }
 
     public static void close() {
-        driver.quit();
+        String sdfsdf=testingType;
+        if (!testingType.equals("api")) {
+            driver.quit();
+        }
     }
 
     public static void startAppiumServer() {
