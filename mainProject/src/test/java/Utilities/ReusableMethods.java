@@ -117,12 +117,12 @@ public class ReusableMethods {
         js.executeScript("arguments[0].click;", we);
     }
 
-    public static void clickElement(By by) {
-        driver.findElement(by).click();
+    public static void clickElement(WebElement we) {
+        we.click();
     }
 
-    public static void clickElementWithIndex(By by, int index) {
-        driver.findElements(by).get(index).click();
+    public static void clickElementWithIndex(List<WebElement> we, int index) {
+        we.get(index).click();
     }
 
     public static void clickByActions(By by) {
@@ -140,8 +140,8 @@ public class ReusableMethods {
 
     //Enter data
 
-    public static void enterData(final By by, String data) {
-        driver.findElement(by).sendKeys(data);
+    public static void enterData(final WebElement we, String data) {
+        we.sendKeys(data);
     }
 
     public static void enterDataLetterByLetter(final By by, final By by1, String data) {
@@ -158,16 +158,16 @@ public class ReusableMethods {
 
     //getText
 
-    public static String getText(By by) {
-        return driver.findElement(by).getText();
+    public static String getText(WebElement we) {
+        return we.getText();
     }
 
     public static String getTextWithIndex(By by, int index) {
         return driver.findElements(by).get(index).getText();
     }
 
-    public static String getAttribute(By by, String key) {
-        return driver.findElement(by).getAttribute(key);
+    public static String getAttribute(WebElement we, String key) {
+        return we.getAttribute(key);
     }
 
     public static String getAttributeWithIndex(By by, String key, int index) {
@@ -193,8 +193,8 @@ public class ReusableMethods {
 
     //Keyboard operations
 
-    public static void clickEnter(By by) {
-        driver.findElement(by).sendKeys(Keys.ENTER);
+    public static void clickEnter(WebElement we) {
+        we.sendKeys(Keys.ENTER);
     }
 
     public static void clickDownArrowInKeyboard(By by) {
@@ -345,9 +345,9 @@ public class ReusableMethods {
         file.delete();
     }
 
-    public static void longPressAction(By ele) {
+    public static void longPressAction(WebElement ele) {
         ((JavascriptExecutor) driver).executeScript("mobile: longClickGesture",
-                ImmutableMap.of("elementId", ((RemoteWebElement) driver.findElement(ele)).getId(),
+                ImmutableMap.of("elementId", ((RemoteWebElement) ele).getId(),
                         "duration", 2000));
     }
 
@@ -362,17 +362,17 @@ public class ReusableMethods {
         } while (canScrollMore);
     }
 
-    public static void swipeAction(By ele, String direction) {
+    public static void swipeAction(WebElement ele, String direction) {
         ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
-                "elementId", ((RemoteWebElement) driver.findElement(ele)).getId(),
+                "elementId", ((RemoteWebElement) ele).getId(),
                 "direction", direction,
                 "percent", 0.75
         ));
     }
 
-    public static void dragAndDropAction(By source, int x, int y) {
+    public static void dragAndDropAction(WebElement source, int x, int y) {
         ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
-                "elementId", ((RemoteWebElement) driver.findElement(source)).getId(),
+                "elementId", ((RemoteWebElement) source).getId(),
                 "endX", x,
                 "endY", y
         ));

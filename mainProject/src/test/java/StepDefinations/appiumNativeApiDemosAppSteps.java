@@ -1,38 +1,41 @@
 package StepDefinations;
 
+import Pages.appiumNativeApiDemosApp;
 import io.cucumber.java.en.*;
 
-import static Pages.appiumNativeApiDemosApp.*;
+import static Utilities.BrowserDriver.driver;
 
 public class appiumNativeApiDemosAppSteps {
 
+    appiumNativeApiDemosApp apiDemosApp = new appiumNativeApiDemosApp(driver);
+
     @Given("^I am on api demos app and click on '(.*)'$")
     public void demo(String option) {
-        iselectRequiredOption(option);
+        apiDemosApp.iselectRequiredOption(option);
     }
 
     @Given("^I select '(.*)' checkbox$")
-    public static void checkbox(String option) {
-        selectCheckbox(option);
+    public void checkbox(String option) {
+        apiDemosApp.selectCheckbox(option);
     }
 
     @Given("^I click on '(.*)'$")
-    public static void iclickonwifisettings(String option) {
-        IClickOnWifiSettings(option);
+    public void iclickonwifisettings(String option) {
+        apiDemosApp.IClickOnWifiSettings(option);
     }
 
     @Given("^I enter data in '(.*)'$")
-    public static void ienterData(String option) {
-        iEnterDataInTextBox(option);
+    public void ienterData(String option) {
+        apiDemosApp.iEnterDataInTextBox(option);
     }
 
     @Given("^I '(.*)' to '(.*)'$")
-    public static void perform_Required_Action(String operationToBePerformed, String element) {
-        performRequiredAction(operationToBePerformed, element);
+    public void perform_Required_Action(String operationToBePerformed, String element) {
+        apiDemosApp.performRequiredAction(operationToBePerformed, element);
     }
 
     @Given("^I directly navigate to '(.*)'$")
     public void inavigateToRequiredPage(String pageName) {
-        navigateToRequiredPageDirectly(pageName);
+        apiDemosApp.navigateToRequiredPageDirectly(pageName);
     }
 }
