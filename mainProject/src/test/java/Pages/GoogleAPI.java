@@ -13,9 +13,14 @@ import io.restassured.path.json.JsonPath;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class GoogleAPI {
 
     WebDriver driver;
+    String jsonPath = "C:\\Users\\swarg\\framework\\projectFramework\\mainProject\\src\\test\\resources\\JSON files\\complex.json";
 
     public GoogleAPI(WebDriver driver) {
         this.driver = driver;
@@ -69,5 +74,53 @@ public class GoogleAPI {
         String params = js.getString(requiredParam);
         setContext(PARAMS, params);
         return params;
+    }
+
+    public void complexJSON() throws IOException {
+        JsonPath js = new JsonPath(new String(Files.readAllBytes(Paths.get(jsonPath))));
+
+//Print No of courses returned by API
+        int count = js.getInt("courses.size()");
+        System.out.println("No of courses returned by API: " + count);
+
+//Print Purchase Amount
+        int totalAmount = js.getInt("dashboard.purchaseAmount");
+        System.out.println("Purchase Amount: " + totalAmount);
+
+//Print Title of the first course
+        String titleFirstCourse = js.get("courses[0].title");
+        System.out.println("Title of the first course: " + titleFirstCourse);
+
+//Print All course titles and their respective Prices
+        for (int i = 0; i < count; i++) {
+            System.out.println(i + 1 + " - Course Price: " + js.get("courses[" + i + "].price").toString());
+            System.out.println(i + 1 + " - Course title: " + js.get("courses[" + i + "].title").toString());
+        }
+
+//Print no of copies sold by RPA Course
+        System.out.println("***************** Print no of copies sold by RPA Course ******************");
+
+        for (int i = 0; i < count; i++) {
+            String courseTitles = js.get("courses[" + i + "].title");
+            if (courseTitles.equalsIgnoreCase("RPA")) {
+                System.out.println("No of copies sold by RPA Course: " + js.get("courses[" + i + "].copies"));
+                break;
+            }
+        }
+
+//Sum of prices validation
+        System.out.println("***************** Sum of prices validation ******************");
+
+        int sum = 0;
+        for (int i = 0; i < count; i++) {
+            int price = js.getInt("courses[" + i + "].price");
+            int copies = js.getInt("courses[" + i + "].copies");
+            int amount = price * copies;
+            System.out.println("Amount: " + amount);
+            sum = sum + amount;
+        }
+
+        System.out.println("Sum of Prices: " + sum);
+        Assert.assertEquals(sum, js.getInt("dashboard.purchaseAmount"));
     }
 }
