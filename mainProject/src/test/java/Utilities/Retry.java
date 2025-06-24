@@ -3,7 +3,7 @@ package Utilities;
 import org.testng.*;
 
 public class Retry implements IRetryAnalyzer {
-    int maxTry = 0;
+    int maxTry = 1;
     int count = 0;
 
     @Override
