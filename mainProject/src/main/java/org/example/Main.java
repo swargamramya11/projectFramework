@@ -27,6 +27,7 @@ public class Main {
         }
 
 
+
 //        //Print duplicates of int array
 //        int[] arr = new int[]{1, 2, 3, 3, 2};
 //        for (int i = 0; i < arr.length; i++) {
@@ -36,6 +37,8 @@ public class Main {
 //                }
 //            }
 //        }
+
+
 
         //Print duplicates in string
 //        String S ="fddfddsss";
@@ -48,6 +51,7 @@ public class Main {
 //            }
 //        }
 //        System.out.println(t);
+
 
 
         //Print Characters first and then special characters
