@@ -8,6 +8,7 @@ public class Main {
         for (int i = 0; i <= arr.length - 1; i++) {
             int count = 1;
             boolean countedalready = false;
+
             for (int k = 0; k < i; k++) {
                 if (arr[i] == arr[k]) {
                     countedalready = true;
@@ -22,7 +23,7 @@ public class Main {
                     count++;
                 }
             }
-            System.out.println(arr[i] + "-" + count);
+            System.out.println(arr[i] + " : " + count);
         }
 
 
