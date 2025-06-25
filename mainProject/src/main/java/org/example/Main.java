@@ -68,6 +68,8 @@ public class Main {
 //        System.out.print(schar.trim() + str.trim());
 //    }
 
+
+
         //Prime Number
 //        int num = 29;
 //        boolean flag = false;
@@ -93,6 +95,7 @@ public class Main {
 //        }
 
 
+
         //Reverse of Number
 //        int n = 371, rem, reverse = 0;
 //
@@ -103,6 +106,8 @@ public class Main {
 //        }
 //
 //        System.out.println(reverse);
+
+
 
         //Armstrong number
 //        int n = 371, n2, rem, result = 0;
@@ -119,6 +124,8 @@ public class Main {
 //        } else {
 //            System.out.println("not armstrong");
 //        }
+
+
 
         //Reverse of string/ String Palindrome
 //        String str1 = "ramya";
@@ -138,6 +145,8 @@ public class Main {
 //            System.out.println("not palindrome");
 //        }
 
+
+
         //Fibonacci series
 //        int n1 = 0, n2 = 1, n3, count = 10;
 //        System.out.print(n1 + " " + n2);
@@ -148,6 +157,7 @@ public class Main {
 //            n1 = n2;
 //            n2 = n3;
 //        }
+
 
 
         //Count digits of number
