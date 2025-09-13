@@ -18,11 +18,25 @@ public class LoginPage {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @FindBy(xpath = "(//input[@type='email'])[2]")
+    @FindBy(xpath = "(//input[@type='email'])")
     WebElement enteremail;
+
+    @FindBy(xpath = "//button[text()='Continue shopping']")
+    WebElement continueShopping;
+
+    @FindBy(xpath = "//span[@id='nav-link-accountList-nav-line-1']//parent::div//parent::a")
+    WebElement signIn;
 
     public void enterEmail(String email) {
         enterData(enteremail, getProp(email));
         setContext(USERNAME, email);
+    }
+
+    public void contineShopping() {
+        clickElement(continueShopping);
+    }
+
+    public void clickSignIn() {
+        clickElement(signIn);
     }
 }

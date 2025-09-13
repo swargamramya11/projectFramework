@@ -3,29 +3,38 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
+//        Reverse words
+
+        String str = "I hate myself";
+        String [] reverse = null;
+        String mainString = " ";
+
+        reverse = str.split(" ");
+
+
+
         //Print frequency of numbers in array
-        int arr[] = {1, 2, 2, 3, 4, 3, 2, 3};
-        for (int i = 0; i <= arr.length - 1; i++) {
-            int count = 1;
-            boolean countedalready = false;
-
-            for (int k = 0; k < i; k++) {
-                if (arr[i] == arr[k]) {
-                    countedalready = true;
-                    break;
-                }
-            }
-
-            if (countedalready) continue;
-
-            for (int j = i + 1; j <= arr.length - 1; j++) {
-                if (arr[i] == arr[j]) {
-                    count++;
-                }
-            }
-            System.out.println(arr[i] + " : " + count);
-        }
-
+//        int arr[] = {1, 2, 2, 3, 4, 3, 2, 3};
+//        for (int i = 0; i <= arr.length - 1; i++) {
+//            int count = 1;
+//            boolean countedalready = false;
+//
+//            for (int k = 0; k < i; k++) {
+//                if (arr[i] == arr[k]) {
+//                    countedalready = true;
+//                    break;
+//                }
+//            }
+//
+//            if (countedalready) continue;
+//
+//            for (int j = i + 1; j <= arr.length - 1; j++) {
+//                if (arr[i] == arr[j]) {
+//                    count++;
+//                }
+//            }
+//            System.out.println(arr[i] + " : " + count);
+//        }
 
 
 //        //Print duplicates of int array
@@ -39,7 +48,6 @@ public class Main {
 //        }
 
 
-
         //Print duplicates in string
 //        String S ="fddfddsss";
 //        String t = "";
@@ -51,7 +59,6 @@ public class Main {
 //            }
 //        }
 //        System.out.println(t);
-
 
 
         //Print Characters first and then special characters
@@ -71,7 +78,6 @@ public class Main {
 //        }
 //        System.out.print(schar.trim() + str.trim());
 //    }
-
 
 
         //Prime Number
@@ -99,7 +105,6 @@ public class Main {
 //        }
 
 
-
         //Reverse of Number
 //        int n = 371, rem, reverse = 0;
 //
@@ -110,7 +115,6 @@ public class Main {
 //        }
 //
 //        System.out.println(reverse);
-
 
 
         //Armstrong number
@@ -128,7 +132,6 @@ public class Main {
 //        } else {
 //            System.out.println("not armstrong");
 //        }
-
 
 
         //Reverse of string/ String Palindrome
@@ -150,7 +153,6 @@ public class Main {
 //        }
 
 
-
         //Fibonacci series
 //        int n1 = 0, n2 = 1, n3, count = 10;
 //        System.out.print(n1 + " " + n2);
@@ -161,7 +163,6 @@ public class Main {
 //            n1 = n2;
 //            n2 = n3;
 //        }
-
 
 
         //Count digits of number

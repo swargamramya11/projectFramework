@@ -162,7 +162,6 @@
             <properties>
                 <deviceType>native-mobile</deviceType>
                 <testingType>mobile</testingType>
-                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
@@ -170,7 +169,6 @@
             <properties>
                 <deviceType>web-mobile</deviceType>
                 <testingType>mobile</testingType>
-                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
@@ -178,14 +176,12 @@
             <properties>
                 <deviceType>desktop-windows</deviceType>
                 <testingType>desktop</testingType>
-                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
             <id>grid</id>
             <properties>
                 <deviceType>grid</deviceType>
-                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
         <profile>
@@ -204,7 +200,6 @@
             <id>api</id>
             <properties>
                 <testingType>api</testingType>
-                <properties.path>/environment.properties</properties.path>
             </properties>
         </profile>
     </profiles>
