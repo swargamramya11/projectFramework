@@ -3,6 +3,8 @@ package Pages;
 import io.appium.java_client.pagefactory.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import static Utilities.GlobalVariables.Context.*;
 import static Utilities.GlobalVariables.ScenarioContext.*;
@@ -38,5 +40,19 @@ public class LoginPage {
 
     public void clickSignIn() {
         clickElement(signIn);
+    }
+
+    @DataProvider(name = "test-data")
+    public Object[][] getDataFromProvider() {
+        return new Object[][]{
+                {"Test"}, {"Automation"},
+                {"Test1"}, {"Automation1"}
+        };
+    }
+
+    @Test(dataProvider = "ProvideSearch")
+    public void Userenters(String username, String password) {
+        System.out.println(username);
+        System.out.println(password);
     }
 }

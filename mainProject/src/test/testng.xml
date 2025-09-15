@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestSuite">
+    <parameter name="Url" value="Https://amazon.com"/>   <!-- Parameterize test -->
+    <test name="Regression">   <!-- Define a test -->
+        <classes>
+            <!-- Specify the test classes -->
+            <class name="test.loginpage"/>
+        </classes>
+    </test>
+</suite>
