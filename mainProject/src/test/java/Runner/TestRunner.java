@@ -13,7 +13,7 @@ import static Utilities.ReusableMethods.*;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"Utilities", "StepDefinations"},
-        tags = "@test1",
+        tags = "@Regression",
         plugin = {"pretty", "html:target/cucumber-reports",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -22,6 +22,12 @@ import static Utilities.ReusableMethods.*;
 )
 
 public class TestRunner extends AbstractTestNGCucumberTests {
+
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios(){
+        return super.scenarios();
+    }
 
     @Test(
             groups = {"cucumber"},
