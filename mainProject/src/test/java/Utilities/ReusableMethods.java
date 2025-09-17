@@ -17,6 +17,7 @@ import java.text.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.NoSuchElementException;
 
 import static Utilities.BrowserDriver.*;
 import static Utilities.GlobalVariables.ScenarioContext.*;
@@ -432,5 +433,26 @@ public class ReusableMethods {
 
     public static JsonPath rawToJson(String response) {
         return new JsonPath(response);
+    }
+
+    public void fluentWait() {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(15))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(NoSuchElementException.class);
+        WebElement element = wait.until(driver -> driver.findElement(By.id("username")));
+    }
+
+    public void navigateToChildWindows() {
+        Set<String> windows=driver.getWindowHandles();
+        Iterator it = windows.iterator();
+        String window1 = it.next().toString();
+        String window2 = it.next().toString();
+        String window3 = it.next().toString();
+        driver.switchTo().window(window2);
+    }
+
+    public void deleteCookies() {
+        driver.manage().deleteAllCookies();
     }
 }
