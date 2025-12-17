@@ -1,6 +1,7 @@
 package Pages;
 
 import Utilities.listeners;
+import com.beust.jcommander.Parameter;
 import io.appium.java_client.pagefactory.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
@@ -132,5 +133,11 @@ public class LoginPage {
     @Test(groups = "Sanity")
     public void grouping() {
         System.out.println("Verifying Groups");
+    }
+
+    @Parameter(names = {"Url", "sdfs","asdas"})
+    @Test
+    public void verifyTitle1(@Optional("https://google.com") String Url) {
+        System.out.println("Verifying Title");
     }
 }

@@ -5,6 +5,45 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
+
+//        // .equals() text comparision, == address conparision
+//        String a = "Hello";
+//        String b = "Hello";
+//        StringBuilder c = new StringBuilder("Hello");
+//        StringBuilder d =  new StringBuilder("Hello");
+//
+//
+//        System.out.println(a==b); //true a,b will have same memory allocated as they are string literal in
+//        // String constant pool so address will be same
+//        System.out.println(c==d); //false as it is stringbuffer new memories will be allocated in heap memory, so it will be false
+//
+//        System.out.println(a.equals(b)); //true
+//        System.out.println(c.equals(d)); //true
+//
+//        System.out.println(b.equals(d)); // true
+
+//        String str = "sdfsfrsfsdfdvcv";
+//        int[] freq = new int[256];
+//
+//        for (int i = 0; i < str.length(); i++) {
+//            char ch = str.charAt(i);
+//            freq[ch]++;
+//        }
+//
+//        System.out.println("Character frequencies:");
+//        for (int i = 0; i < freq.length; i++) {
+////            if (freq[i] > 0) {
+////                System.out.println((char) i + " has count " + freq[i]);
+////            }
+//
+//            if (freq[i] == 1) {
+//                System.out.println((char) i + " is unique ");
+//            }
+//
+////            if (freq[i] > 1) {
+////                System.out.println((char) i + " is duplicate ");
+////            }
+//        }
 //        *             *
 //        * *         * *
 //        * * *     * * *
