@@ -4,6 +4,7 @@ import Pages.LoginPage;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.By;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ import static Utilities.ReusableMethods.*;
 
 public class LoginPageSteps {
 
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage();
 
     @Given("^I am a amazon user login with '(.*)'$")
     public void login(String email) {
@@ -35,5 +36,11 @@ public class LoginPageSteps {
 
             }
         }
+    }
+
+    @Given("^I am on sample site$")
+    public void login1() {
+        enterData(getDriver().findElement(By.xpath("//input[@name ='firstName']")), "ramya");
+        threadSleep(5000);
     }
 }

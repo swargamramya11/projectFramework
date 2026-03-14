@@ -144,17 +144,17 @@
 
     <profiles>
         <profile>
-            <id>amazon-uat1</id>
+            <id>sampleSite</id>
             <properties>
-                <env>uat1</env>
-                <properties.path>/environments/amazon-uat1.properties</properties.path>
+                <env>sampleSite</env>
+                <properties.path>/environments/sampleSite.properties</properties.path>
             </properties>
         </profile>
         <profile>
-            <id>amazon-uat2</id>
+            <id>amazon</id>
             <properties>
-                <env>uat2</env>
-                <properties.path>/environments/amazon-uat2.properties</properties.path>
+                <env>amazon</env>
+                <properties.path>/environments/amazon.properties</properties.path>
             </properties>
         </profile>
         <profile>

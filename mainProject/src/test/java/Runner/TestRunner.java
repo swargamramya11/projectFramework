@@ -42,7 +42,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     }
 
     @BeforeSuite
-    public static void beforeSuite() throws IOException {
+    public void beforeSuite() throws IOException {
         System.out.println("Before Suite");
         deleteRequiredFolder("\\target\\allure");
 
@@ -57,7 +57,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     }
 
     @AfterSuite
-    public static void afterSuite() throws IOException {
+    public void afterSuite() throws IOException {
         System.out.println("After Suite");
 
         if (deviceType.contains("mobile")) {

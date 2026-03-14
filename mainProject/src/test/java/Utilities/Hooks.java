@@ -9,7 +9,7 @@ import static Utilities.ReusableMethods.*;
 
 public class Hooks {
 
-    public static BrowserDriver driver;
+    public BrowserDriver driver;
 
     @Before
     public void setup() throws IOException {

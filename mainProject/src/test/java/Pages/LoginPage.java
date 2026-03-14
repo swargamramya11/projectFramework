@@ -1,5 +1,6 @@
 package Pages;
 
+import Utilities.ReusableMethods;
 import Utilities.listeners;
 import com.beust.jcommander.Parameter;
 import io.appium.java_client.pagefactory.*;
@@ -9,17 +10,17 @@ import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
+import static Utilities.BrowserDriver.getDriver;
 import static Utilities.GlobalVariables.Context.*;
 import static Utilities.GlobalVariables.ScenarioContext.*;
 import static Utilities.ReusableMethods.*;
-import org.testng.annotations.*;
 
 public class LoginPage {
 
     WebDriver driver;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
+    public LoginPage() {
+        driver = getDriver();
         PageFactory.initElements(driver, this);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
@@ -80,7 +81,7 @@ public class LoginPage {
     }
 
     //enable/disable test
-    @Test(enabled=false)
+    @Test(enabled = false)
     public void browser() {
         System.out.println("Url");
     }
@@ -135,7 +136,7 @@ public class LoginPage {
         System.out.println("Verifying Groups");
     }
 
-    @Parameter(names = {"Url", "sdfs","asdas"})
+    @Parameter(names = {"Url", "sdfs", "asdas"})
     @Test
     public void verifyTitle1(@Optional("https://google.com") String Url) {
         System.out.println("Verifying Title");

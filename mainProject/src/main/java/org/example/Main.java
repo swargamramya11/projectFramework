@@ -3,7 +3,48 @@ package org.example;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public void main(String[] args) {
+
+
+        String s = "aaProgram";
+        char[] ch = s.toCharArray();
+        boolean[] b = new boolean[s.length()];
+
+        System.out.println("Character Occurrences:");
+        for (int i = 0; i < ch.length; i++) {
+            if (b[i]) continue;     // Skip already counted characters
+            int c = 1;
+            for (int j = i + 1; j < ch.length; j++) {
+                if (ch[i] == ch[j]) {
+                    c++;
+                    b[j] = true;     // Mark character as counted
+                }
+            }
+            System.out.println(ch[i] + " : " + c);
+        }
+    }
+
+//        int number = 10;
+//        boolean flag = false;
+//
+//        for (int i = 2; i < number ; i++) {
+//            if (number % i == 0) {
+//                flag = true;
+//                break;
+//            }
+//        }
+//        if (flag) {
+//            System.out.println("Num is not prime");
+//        } else {
+//            System.out.println("Num is prime");
+//        }
+
+//        for (int i = 1; i <= rows/2+1; i++) {
+//            for (int stars = rows/2; stars >= i; stars--) {
+//                System.out.print("* ");
+//            }
+//            System.out.println();
+//        }
 
 
 //        // .equals() text comparision, == address conparision
@@ -39,10 +80,10 @@ public class Main {
 //            if (freq[i] == 1) {
 //                System.out.println((char) i + " is unique ");
 //            }
-//
-////            if (freq[i] > 1) {
-////                System.out.println((char) i + " is duplicate ");
-////            }
+
+//            if (freq[i] > 1) {
+//                System.out.println((char) i + " is duplicate ");
+//            }
 //        }
 //        *             *
 //        * *         * *
@@ -446,7 +487,7 @@ public class Main {
 //        for (int i = 1; i <= rows; i++) {
 //            for (int j = 1; j <= i; j++) {
 //                System.out.print("*");  //Don't use println because we have to print star in same line
-//                System.out.print("\t");
+//                System.out.print(" ");
 //            }
 //            System.out.println(); //Use println because we have to move to next line when first row is completed
 //        }
@@ -704,34 +745,14 @@ public class Main {
 ////        Print of numbers in a array
 //        int[] a = {3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 7, 8};
 //
-//        ArrayList<Integer> a1 = new ArrayList<Integer>();
+//        ArrayList<Integer> storeUniqueValues = new ArrayList<Integer>();
 //
+////        First loop to have one value as reference
 //        for (int i = 0; i < a.length; i++) {
 //            int k = 0;
-//
-//            if (!a1.contains(a[i])) {
-//                a1.add(a[i]);
-//                k++;
-//                for (int j = i + 1; j < a.length; j++) {
-//                    if (a[i] == a[j]) {
-//                        k++;
-//                    }
-//                }
-//                //Occurance of each element
-//                System.out.println(a[i] + " occured " + k + " times");
-//
-//                //Unique elements
-//                if (k == 1) {
-//                    System.out.println(a[i]);
-//                }
-//
-//                // Duplicate elements in array
-//                if (k > 1) {
-//                    System.out.println(a[i]);
-//                }
-//            }
-//        }
-//    }
+////          Store unique values in a List
+//            if (!storeUniqueValues.contains(a[i])) {
+//             s
 
         //Factorial
 //        4! = 4*3*2*1
@@ -742,5 +763,5 @@ public class Main {
 //            result = result * i;
 //        }
 //        System.out.println(result);
-    }
+//    }
 }

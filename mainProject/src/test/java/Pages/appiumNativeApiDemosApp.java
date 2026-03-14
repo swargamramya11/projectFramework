@@ -16,8 +16,8 @@ public class appiumNativeApiDemosApp {
 
     WebDriver driver;
 
-    public appiumNativeApiDemosApp(WebDriver driver) {
-        this.driver = driver;
+    public appiumNativeApiDemosApp() {
+        driver = getDriver();
         PageFactory.initElements(driver, this);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
@@ -43,7 +43,7 @@ public class appiumNativeApiDemosApp {
 
     public void iselectRequiredOption(String option) {
         threadSleep(2000);
-        getWebDriver().findElement(AppiumBy.accessibilityId(option)).click();
+        getDriver().findElement(AppiumBy.accessibilityId(option)).click();
     }
 
     public void selectCheckbox(String option) {

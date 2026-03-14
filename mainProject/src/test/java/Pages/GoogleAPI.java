@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import static Utilities.GlobalVariables.Context.*;
 import static Utilities.GlobalVariables.ScenarioContext.*;
 import static Utilities.ReusableMethods.*;
+import static Utilities.apiUtilities.payLoad.AddPlace;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 
@@ -17,13 +18,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static Utilities.BrowserDriver.getDriver;
+
 public class GoogleAPI {
 
     WebDriver driver;
     String jsonPath = "C:\\Users\\swarg\\framework\\projectFramework\\mainProject\\src\\test\\resources\\JSON files\\complex.json";
 
-    public GoogleAPI(WebDriver driver) {
-        this.driver = driver;
+    public GoogleAPI() {
+        driver = getDriver();
     }
 
     public void google_api(String requestType) {
@@ -37,7 +40,7 @@ public class GoogleAPI {
             case "ADD":
                 String response = given().log().all().queryParam("key", "qaclick123")
                         .header("Content-Type", "application/json")
-                        .body(payLoad.AddPlace())
+                        .body(AddPlace())
                         .when().post("maps/api/place/add/json")
                         .then().log().all().assertThat().statusCode(200)
                         .body("scope", equalTo("APP"))

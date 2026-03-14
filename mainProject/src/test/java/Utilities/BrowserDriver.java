@@ -21,12 +21,12 @@ import static Utilities.ReusableMethods.*;
 
 public class BrowserDriver {
 
-    public static WebDriver driver;
-    public static WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    public static ChromeOptions options;
-    public static UiAutomator2Options uiOptions;
-    public static DesiredCapabilities gridCapabilities;
-    public static String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\chromedriver.exe";
+    private static ThreadLocal<WebDriver> tdriver = new ThreadLocal<>();
+    public static WebDriverWait webDriverWait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+    public ChromeOptions options;
+    public UiAutomator2Options uiOptions;
+    public DesiredCapabilities gridCapabilities;
+    public String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\chromedriver.exe";
     public static String seleniumServerPath = System.getProperty("user.dir") + "\\src\\test\\resources\\gridFiles\\selenium-server-4.32.0.jar";
     public static String appiumServerPath = "C:\\Users\\swarg\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
     public static AppiumDriverLocalService service;
@@ -35,42 +35,51 @@ public class BrowserDriver {
     public static Process hubProcess;
     public static Process nodeProcess;
 
+    public static void setDriver(WebDriver driver) {
+        tdriver.set(driver);
+    }
+
+    public static WebDriver getDriver() {
+        return tdriver.get();
+    }
+
     public BrowserDriver() throws IOException {
         launchBrowserAndNavigateToUrl();
     }
 
-    public static void launchBrowserAndNavigateToUrl() throws IOException {
+    public void launchBrowserAndNavigateToUrl() throws IOException {
+        WebDriver driver;
         URL url = new URL("http://0.0.0.0:4723");
 
         switch (deviceType) {
             case "desktop-windows":
                 driver = new ChromeDriver(getChromeOptions());
+                setDriver(driver);
                 driver.get(getProp("url"));
                 break;
             case "native-mobile":
                 uiOptions = getUiAutomator2OptionsOfNativeApp();
                 driver = new AndroidDriver(url, uiOptions);
+                setDriver(driver);
                 break;
             case "web-mobile":
                 uiOptions = getUiAutomator2OptionsOfWebMobile();
                 driver = new AndroidDriver(url, uiOptions);
-                driver.get(getProp("url"));
+                setDriver(driver);
+                getDriver().get(getProp("url"));
                 break;
             case "grid":
                 gridCapabilities = gridCapabilities();
 
                 driver = new RemoteWebDriver(new URL("http://localhost:4444"), gridCapabilities);
-                driver.get(getProp("url"));
-                driver.manage().window().maximize();
+                setDriver(driver);
+                getDriver().get(getProp("url"));
+                getDriver().manage().window().maximize();
                 break;
         }
     }
 
-    public static WebDriver getWebDriver() {
-        return driver;
-    }
-
-    public static ChromeOptions getChromeOptions() {
+    public ChromeOptions getChromeOptions() {
         options = new ChromeOptions();
 
         options.setPageLoadTimeout(Duration.of(10, ChronoUnit.SECONDS));
@@ -82,7 +91,7 @@ public class BrowserDriver {
         return options;
     }
 
-    private static UiAutomator2Options getUiAutomator2OptionsOfWebMobile() {
+    private UiAutomator2Options getUiAutomator2OptionsOfWebMobile() {
         uiOptions = new UiAutomator2Options();
         uiOptions.setCapability("browserName", "Chrome");
         uiOptions.setDeviceName("RamyaEmulator");
@@ -91,7 +100,7 @@ public class BrowserDriver {
         return uiOptions;
     }
 
-    private static UiAutomator2Options getUiAutomator2OptionsOfNativeApp() {
+    private UiAutomator2Options getUiAutomator2OptionsOfNativeApp() {
         uiOptions = new UiAutomator2Options();
         uiOptions.setDeviceName("RamyaEmulator");
         uiOptions.setApp(apkPath);
@@ -100,7 +109,7 @@ public class BrowserDriver {
         return uiOptions;
     }
 
-    private static DesiredCapabilities gridCapabilities() {
+    private DesiredCapabilities gridCapabilities() {
         DesiredCapabilities gridCapabilities = new DesiredCapabilities();
         gridCapabilities.setBrowserName("chrome");
 
@@ -108,9 +117,8 @@ public class BrowserDriver {
     }
 
     public static void close() {
-        String sdfsdf=testingType;
         if (!testingType.equals("api")) {
-            driver.quit();
+            getDriver().quit();
         }
     }
 

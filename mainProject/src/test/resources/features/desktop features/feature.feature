@@ -2,8 +2,8 @@ Feature: Login
 
   @test1 @Regression
   Scenario: Login
-    Given I am a amazon user login with 'swargam'
+    Given I am on sample site
 
   @Regression
   Scenario: Login1
-    Given I am a amazon user login with 'ramya'
+    Given I am on sample site

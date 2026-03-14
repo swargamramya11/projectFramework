@@ -20,8 +20,8 @@ import java.util.*;
 import java.util.NoSuchElementException;
 
 import static Utilities.BrowserDriver.*;
-import static Utilities.GlobalVariables.ScenarioContext.*;
 import static Utilities.GlobalVariables.Context.*;
+import static Utilities.GlobalVariables.ScenarioContext.setContext;
 import static Utilities.Props.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 import static org.testng.AssertJUnit.assertTrue;
@@ -31,12 +31,12 @@ public class ReusableMethods {
     //Screenshots
 
     public static byte[] takesScreenshotAsByte() {
-        byte[] screenshot = ((TakesScreenshot) BrowserDriver.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+        byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
         return screenshot;
     }
 
     public static File takesScreenshotAsFile() {
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         return screenshot;
     }
 
@@ -88,35 +88,35 @@ public class ReusableMethods {
 // Scrolls
 
     public static void scrollToElement(By by) {
-        WebElement webElement = driver.findElement(by);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        WebElement webElement = getDriver().findElement(by);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 
     public static void scrollDownByCoordinator(int y) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + y + ")", "");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0," + y + ")", "");
     }
 
     public static void scrollUpByCoordinator(int y) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -" + y + ")", "");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0, -" + y + ")", "");
     }
 
     public static void scrollDownByCoordinatorInTable(String cssSelector) {
-        ((JavascriptExecutor) driver).executeScript("document.activeElement.querySelector(\"" + cssSelector + "\").scrollTop=document.activeElement.querySelector(\"" + cssSelector + "\").scrollHeight");
+        ((JavascriptExecutor) getDriver()).executeScript("document.activeElement.querySelector(\"" + cssSelector + "\").scrollTop=document.activeElement.querySelector(\"" + cssSelector + "\").scrollHeight");
     }
 
     public static void scrollDownThePage() {
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0,document.body.scrollHeight);");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollTo(0,document.body.scrollHeight);");
     }
 
     public static void scrollUpThePage() {
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0,document.body.scrollHeight, 0);");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollTo(0,document.body.scrollHeight, 0);");
     }
 
     //Clicks
 
     public static void javaScriptExecutorClick(By by) {
-        WebElement we = driver.findElement(by);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement we = getDriver().findElement(by);
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].click;", we);
     }
 
@@ -129,15 +129,15 @@ public class ReusableMethods {
     }
 
     public static void clickByActions(By by) {
-        WebElement we = driver.findElement(by);
-        Actions builder = new Actions(driver);
+        WebElement we = getDriver().findElement(by);
+        Actions builder = new Actions(getDriver());
         builder.moveToElement(we).click(we);
         builder.perform();
     }
 
     public static void doubleClickByActions(By by) {
-        WebElement we = driver.findElement(by);
-        Actions builder = new Actions(driver);
+        WebElement we = getDriver().findElement(by);
+        Actions builder = new Actions(getDriver());
         builder.doubleClick(we).perform();
     }
 
@@ -152,9 +152,9 @@ public class ReusableMethods {
             char c = data.charAt(i);
             String s = new StringBuilder().append(c).toString();
             try {
-                driver.findElement(by1).sendKeys(s);
+                getDriver().findElement(by1).sendKeys(s);
             } catch (Exception e) {
-                driver.findElement(by).sendKeys(s);
+                getDriver().findElement(by).sendKeys(s);
             }
         }
     }
@@ -166,7 +166,7 @@ public class ReusableMethods {
     }
 
     public static String getTextWithIndex(By by, int index) {
-        return driver.findElements(by).get(index).getText();
+        return getDriver().findElements(by).get(index).getText();
     }
 
     public static String getAttribute(WebElement we, String key) {
@@ -174,23 +174,23 @@ public class ReusableMethods {
     }
 
     public static String getAttributeWithIndex(By by, String key, int index) {
-        return driver.findElements(by).get(index).getAttribute(key);
+        return getDriver().findElements(by).get(index).getAttribute(key);
     }
 
     //select dropdowns
 
     public static void selectByValue(By by, String value) {
-        Select sc = new Select(driver.findElement(by));
+        Select sc = new Select(getDriver().findElement(by));
         sc.selectByValue(value);
     }
 
     public static void selectByVisibleText(By by, String value) {
-        Select sc = new Select(driver.findElement(by));
+        Select sc = new Select(getDriver().findElement(by));
         sc.selectByVisibleText(value);
     }
 
     public static void selectByIndex(By by, int value) {
-        Select sc = new Select(driver.findElement(by));
+        Select sc = new Select(getDriver().findElement(by));
         sc.selectByIndex(value);
     }
 
@@ -201,37 +201,37 @@ public class ReusableMethods {
     }
 
     public static void clickDownArrowInKeyboard(By by) {
-        driver.findElement(by).sendKeys(Keys.DOWN);
+        getDriver().findElement(by).sendKeys(Keys.DOWN);
     }
 
     public static void clickUpArrowInKeyboard(By by) {
-        driver.findElement(by).sendKeys(Keys.UP);
+        getDriver().findElement(by).sendKeys(Keys.UP);
     }
 
     public static void clickTABInKeyboard(By by) {
-        driver.findElement(by).sendKeys(Keys.TAB);
+        getDriver().findElement(by).sendKeys(Keys.TAB);
     }
 
     public static void clickDownArrowUsingActions() {
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.keyDown(Keys.DOWN).perform();
     }
 
     public static void clickUpArrowUsingActions() {
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.keyDown(Keys.UP).perform();
     }
 
     public static void clickEnterArrowUsingActions() {
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.keyDown(Keys.ENTER).perform();
     }
 
     //mouse operations
 
     public static void moveToElement(By by) {
-        WebElement we = driver.findElement(by);
-        Actions builder = new Actions(driver);
+        WebElement we = getDriver().findElement(by);
+        Actions builder = new Actions(getDriver());
         builder.moveToElement(we).perform();
     }
     //Waits
@@ -252,7 +252,7 @@ public class ReusableMethods {
     }
 
     public static void waitForExpectedElement(By by, long waitTimeInSeconds) {
-        WebDriverWait wait1 = new WebDriverWait(getWebDriver(), Duration.ofSeconds(waitTimeInSeconds));
+        WebDriverWait wait1 = new WebDriverWait(getDriver(), Duration.ofSeconds(waitTimeInSeconds));
         try {
             webDriverWait.until(visibilityOfElementLocated(by));
         } catch (Exception e) {
@@ -300,40 +300,40 @@ public class ReusableMethods {
     //Iframes
 
     public static void switchToFrameByXpath(By by) {
-        WebElement iframe = driver.findElement(by);
-        driver.switchTo().frame(iframe);
+        WebElement iframe = getDriver().findElement(by);
+        getDriver().switchTo().frame(iframe);
     }
 
     //Window Handle
 
     public static String storeMainWindow() {
-        String mainWidow = driver.getWindowHandle();
+        String mainWidow = getDriver().getWindowHandle();
         setContext(MAINWINDOW, mainWidow);
         return mainWidow;
     }
 
     public static void switchToNewWindow(int tabNumber) {
-        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
+        ArrayList<String> tab = new ArrayList<>(getDriver().getWindowHandles());
         String tabName = tab.get(tabNumber);
-        driver.switchTo().window(tabName);
+        getDriver().switchTo().window(tabName);
     }
 
     public static void switchToMainWindow(String mainWindowHandle) {
-        driver.switchTo().window(mainWindowHandle);
+        getDriver().switchTo().window(mainWindowHandle);
     }
 
     //Extra methods
 
     public static void refreshPage() {
-        driver.navigate().refresh();
+        getDriver().navigate().refresh();
     }
 
     public static void clearTextBox(By by) {
-        driver.findElement(by).clear();
+        getDriver().findElement(by).clear();
     }
 
     public static void resizeScreen(String size) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("document.body.style.zoom'" + size + "';");
     }
 
@@ -349,7 +349,7 @@ public class ReusableMethods {
     }
 
     public static void longPressAction(WebElement ele) {
-        ((JavascriptExecutor) driver).executeScript("mobile: longClickGesture",
+        ((JavascriptExecutor) getDriver()).executeScript("mobile: longClickGesture",
                 ImmutableMap.of("elementId", ((RemoteWebElement) ele).getId(),
                         "duration", 2000));
     }
@@ -357,7 +357,7 @@ public class ReusableMethods {
     public static void scrollToEndAction() {
         boolean canScrollMore;
         do {
-            canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
+            canScrollMore = (Boolean) ((JavascriptExecutor) getDriver()).executeScript("mobile: scrollGesture", ImmutableMap.of(
                     "left", 100, "top", 100, "width", 200, "height", 200,
                     "direction", "down",
                     "percent", 3.0
@@ -366,7 +366,7 @@ public class ReusableMethods {
     }
 
     public static void swipeAction(WebElement ele, String direction) {
-        ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+        ((JavascriptExecutor) getDriver()).executeScript("mobile: swipeGesture", ImmutableMap.of(
                 "elementId", ((RemoteWebElement) ele).getId(),
                 "direction", direction,
                 "percent", 0.75
@@ -374,7 +374,7 @@ public class ReusableMethods {
     }
 
     public static void dragAndDropAction(WebElement source, int x, int y) {
-        ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
+        ((JavascriptExecutor) getDriver()).executeScript("mobile: dragGesture", ImmutableMap.of(
                 "elementId", ((RemoteWebElement) source).getId(),
                 "endX", x,
                 "endY", y
@@ -382,40 +382,40 @@ public class ReusableMethods {
     }
 
     public static void pressEnter() {
-        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
+        ((AndroidDriver) getDriver()).pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public static void pressHome() {
-        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.HOME));
+        ((AndroidDriver) getDriver()).pressKey(new KeyEvent(AndroidKey.HOME));
     }
 
     public static void pressBack() {
-        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
+        ((AndroidDriver) getDriver()).pressKey(new KeyEvent(AndroidKey.BACK));
     }
 
     public static void landScape() {
         DeviceRotation landScape = new DeviceRotation(0, 0, 90);
-        ((AndroidDriver) driver).rotate(landScape);
+        ((AndroidDriver) getDriver()).rotate(landScape);
     }
 
     public static String getClipBoardData() {
-        return ((AndroidDriver) driver).getClipboardText();
+        return ((AndroidDriver) getDriver()).getClipboardText();
     }
 
     public static void setClipBoardData(String text) {
-        ((AndroidDriver) driver).setClipboardText(text);
+        ((AndroidDriver) getDriver()).setClipboardText(text);
     }
 
     public static void startActivity(String activity) {
-        ((JavascriptExecutor) driver).executeScript("mobile: startActivity", ImmutableMap.of("intent", activity));
+        ((JavascriptExecutor) getDriver()).executeScript("mobile: startActivity", ImmutableMap.of("intent", activity));
     }
 
     public static void hideKeyBoard() {
-        ((AndroidDriver) driver).hideKeyboard();
+        ((AndroidDriver) getDriver()).hideKeyboard();
     }
 
     public static void scrollDownToParticularElement(String elementName) {
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementName + "\"));"));
+        getDriver().findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementName + "\"));"));
     }
 
     public static Double getFormattedAmount(String amount) {
@@ -424,35 +424,35 @@ public class ReusableMethods {
     }
 
     public static Set getContextHandles() {
-        return ((AndroidDriver) driver).getContextHandles();
+        return ((AndroidDriver) getDriver()).getContextHandles();
     }
 
     public static void navigateToContext(String context) {
-        ((AndroidDriver) driver).context(context);
+        ((AndroidDriver) getDriver()).context(context);
     }
 
     public static JsonPath rawToJson(String response) {
         return new JsonPath(response);
     }
 
-    public void fluentWait() {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
+    public static void fluentWait() {
+        Wait<WebDriver> wait = new FluentWait<>(getDriver())
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
-        WebElement element = wait.until(driver -> driver.findElement(By.id("username")));
+        WebElement element = wait.until(driver -> getDriver().findElement(By.id("username")));
     }
 
-    public void navigateToChildWindows() {
-        Set<String> windows=driver.getWindowHandles();
+    public static void navigateToChildWindows() {
+        Set<String> windows = getDriver().getWindowHandles();
         Iterator it = windows.iterator();
         String window1 = it.next().toString();
         String window2 = it.next().toString();
         String window3 = it.next().toString();
-        driver.switchTo().window(window2);
+        getDriver().switchTo().window(window2);
     }
 
-    public void deleteCookies() {
-        driver.manage().deleteAllCookies();
+    public static void deleteCookies() {
+        getDriver().manage().deleteAllCookies();
     }
 }

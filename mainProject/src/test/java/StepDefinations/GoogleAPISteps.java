@@ -5,11 +5,9 @@ import io.cucumber.java.en.*;
 
 import java.io.IOException;
 
-import static Utilities.BrowserDriver.driver;
-
 public class GoogleAPISteps {
 
-    GoogleAPI googleApi = new GoogleAPI(driver);
+    GoogleAPI googleApi = new GoogleAPI();
 
     @Given("^I '(.*)' place$")
     public void api(String requestType) {

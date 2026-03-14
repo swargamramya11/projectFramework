@@ -4,11 +4,9 @@ import Pages.appiumNativeGeneralStoreApp;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 
-import static Utilities.BrowserDriver.*;
-
 public class appiumNativeGeneralStoreAppSteps {
 
-    appiumNativeGeneralStoreApp general = new appiumNativeGeneralStoreApp(driver);
+    appiumNativeGeneralStoreApp general = new appiumNativeGeneralStoreApp();
 
     @Given("^I enter data in below field$")
     public void IEnterData(DataTable dataTable) {

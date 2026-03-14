@@ -3,11 +3,9 @@ package StepDefinations;
 import Pages.appiumNativeApiDemosApp;
 import io.cucumber.java.en.*;
 
-import static Utilities.BrowserDriver.driver;
-
 public class appiumNativeApiDemosAppSteps {
 
-    appiumNativeApiDemosApp apiDemosApp = new appiumNativeApiDemosApp(driver);
+    appiumNativeApiDemosApp apiDemosApp = new appiumNativeApiDemosApp();
 
     @Given("^I am on api demos app and click on '(.*)'$")
     public void demo(String option) {

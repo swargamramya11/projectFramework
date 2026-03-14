@@ -20,8 +20,8 @@ public class appiumNativeGeneralStoreApp {
 
     WebDriver driver;
 
-    public appiumNativeGeneralStoreApp(WebDriver driver) {
-        this.driver = driver;
+    public appiumNativeGeneralStoreApp() {
+        driver = getDriver();
         PageFactory.initElements(driver, this);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
