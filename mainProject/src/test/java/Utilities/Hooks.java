@@ -26,6 +26,6 @@ public class Hooks {
             scenario.attach(takesScreenshotAsByte(), "image/png", scenario.getName());
         }
 
-        close();
+        quitDriver();
     }
 }

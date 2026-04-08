@@ -166,7 +166,6 @@ public class appiumNativeGeneralStoreApp {
     public void iClickOnCheckbox(String option) {
         switch (option) {
             case "Terms and Conditions":
-//                driver.findElement(AppiumBy.className(termsAndConditionsCheckbox)).click();
                 clickElement(termsAndConditionsCheckbox);
                 break;
         }

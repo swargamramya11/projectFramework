@@ -82,6 +82,15 @@ public class BrowserDriver {
     public ChromeOptions getChromeOptions() {
         options = new ChromeOptions();
 
+        if(deviceType.contains("grid")) {
+            options.setBinary("C:\\Program Files\\Google\\Chrome\\Application.chrome.exe");
+            String chromeVersion = System.getProperty("chrome.version");
+
+            if (chromeVersion != null & !chromeVersion.isEmpty()) {
+                options.setBrowserVersion(chromeVersion);
+            }
+        }
+
         options.setPageLoadTimeout(Duration.of(10, ChronoUnit.SECONDS));
         options.addArguments("start-maximized");
         options.addArguments("--incognito");
@@ -116,7 +125,7 @@ public class BrowserDriver {
         return gridCapabilities;
     }
 
-    public static void close() {
+    public static void quitDriver() {
         if (!testingType.equals("api")) {
             getDriver().quit();
         }

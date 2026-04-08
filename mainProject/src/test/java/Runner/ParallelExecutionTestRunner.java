@@ -1,14 +1,21 @@
 package Runner;
 
 import Utilities.Retry;
-import io.cucumber.testng.*;
-import org.testng.annotations.*;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.FeatureWrapper;
+import io.cucumber.testng.PickleWrapper;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 import static Utilities.BrowserDriver.*;
-import static Utilities.Props.*;
-import static Utilities.ReusableMethods.*;
+import static Utilities.Props.deviceType;
+import static Utilities.ReusableMethods.deleteRequiredFolder;
+import static Utilities.ReusableMethods.threadSleep;
 
 @CucumberOptions(
         features = "src/test/resources/features",
@@ -21,7 +28,13 @@ import static Utilities.ReusableMethods.*;
         monochrome = true
 )
 
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class ParallelExecutionTestRunner extends AbstractTestNGCucumberTests {
+
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios(){
+        return super.scenarios();
+    }
 
     @Test(
             groups = {"cucumber"},
